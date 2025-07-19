@@ -1,10 +1,9 @@
-import  { useState } from "react";
+import { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./HeroSection.css";
 
 function HeroSection() {
- 
   const [title, setTitle] = useState(
     localStorage.getItem("heroTitle") || '<h1 class="second-heading">A Luxurious Way To Enjoy Your Life</h1>'
   );
@@ -18,7 +17,6 @@ function HeroSection() {
   const [buttonStyle, setButtonStyle] = useState(localStorage.getItem("buttonStyle") || "fill");
   const [buttonColor, setButtonColor] = useState(localStorage.getItem("buttonColor") || "#e77f2e");
   const [buttonSize, setButtonSize] = useState(localStorage.getItem("buttonSize") || "medium");
-
 
   const [tempText, setTempText] = useState(buttonText);
   const [tempUrl, setTempUrl] = useState(buttonUrl);
@@ -40,18 +38,24 @@ function HeroSection() {
 
   const handleSaveTitle = async () => {
     setEditTitle(false);
-    const payload = { component: "HeroSection", field: "Title", value: title };
+    localStorage.setItem("heroTitle", title);
+
+    const payload = {
+      component: "HeroSection",
+      field: "Title",
+      value: title,
+    };
+
     try {
-      const res = await fetch("https://growthzi-backend0.onrender.com", {
+      const res = await fetch("https://growthzi-backend0.onrender.com/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
       console.log("Title Updated:", data.message);
-      localStorage.setItem("heroTitle", title);
     } catch (err) {
-      console.error("ailed to update title:", err);
+      console.error("Failed to update title:", err);
     }
   };
 
@@ -89,11 +93,11 @@ function HeroSection() {
         style: tempStyle,
         color: tempColor,
         size: tempSize,
-      }
+      },
     };
 
     try {
-      const res = await fetch("https://growthzi-backend0.onrender.com", {
+      const res = await fetch("https://growthzi-backend0.onrender.com/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -108,6 +112,7 @@ function HeroSection() {
   const handleDeleteButton = () => {
     setButtonVisible(false);
     setShowButtonPopup(false);
+
     localStorage.removeItem("buttonText");
     localStorage.removeItem("buttonUrl");
     localStorage.removeItem("buttonStyle");
@@ -119,12 +124,18 @@ function HeroSection() {
   return (
     <section className="hero">
       <nav className="navbar-hero">
-        <div className="logo"><img src={require("../../images/Logo.png")} alt="Logo" /></div>
-        <div className="nav-links"><a href="/">Home</a><a href="/404">  Error</a></div>
+        <div className="logo">
+          <img src={require("../../images/Logo.png")} alt="Logo" />
+        </div>
+        <div className="nav-links">
+          <a href="/">Home</a>
+          <a href="/404">Error</a>
+        </div>
       </nav>
 
       <div className="first-heading">Best Place to Relax and Enjoy</div>
 
+      {/* Editable Title */}
       <div className="editable-container">
         <div dangerouslySetInnerHTML={{ __html: title }} />
         <span className="edit-icon" onClick={() => setEditTitle(true)}>✏️</span>
@@ -139,6 +150,7 @@ function HeroSection() {
         )}
       </div>
 
+      {/* Editable Button */}
       <div className="add-btn-container">
         {buttonVisible ? (
           <div className="editable-container">
@@ -157,6 +169,7 @@ function HeroSection() {
         )}
       </div>
 
+      {/* Popup */}
       {showButtonPopup && (
         <div className="popup-overlay">
           <div className="button-popup-editor">

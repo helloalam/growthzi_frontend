@@ -1,16 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
+
 function App() {
   return (
     <Router>
       <nav className="navbar">
+        {/* Navbar content */}
       </nav>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-         <Route path="/404" element={<Error/>} />
-      </Routes>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/404" component={Error} />
+      </Switch>
     </Router>
   );
 }
