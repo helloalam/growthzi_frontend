@@ -1,7 +1,10 @@
 import { useState } from "react";
-import ReactQuill from "react-quill";
+import ReactQuill ,{Quill} from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./HeroSection.css";
+  const size = Quill.import("formats/size");
+  size.whitelist = ["small", "medium", "large", "huge"];
+  Quill.register(size,true);
 
 function HeroSection() {
   const [title, setTitle] = useState(
@@ -23,6 +26,7 @@ function HeroSection() {
   const [tempStyle, setTempStyle] = useState(buttonStyle);
   const [tempColor, setTempColor] = useState(buttonColor);
   const [tempSize, setTempSize] = useState(buttonSize);
+
 
   const quillModules = {
     toolbar: [
