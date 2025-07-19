@@ -1,0 +1,136 @@
+.room-section {
+  max-width: 1200px;
+  margin: 300px auto 0 auto;
+  padding: 0 24px;
+}
+
+.vertical-line{
+  width: 1.5px;         
+  height: 38px;           
+  background: rgba(191, 151, 102, 1);     
+  margin: 0 auto 18px auto; 
+  border: none;
+  border-radius: 3px;
+}
+.room-section-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.room-section-label {
+  color: rgba(191, 151, 102, 1);
+  font-size: 24px;
+  font-family: poppins;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+  font-weight: lighter;
+}
+
+.room-section-title {
+  font-size: 64px;
+  font-family: Forum;
+  font-weight: lighter;
+  letter-spacing: 0;
+  color:rgba(23, 23, 23, 1);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.room-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 3fr));
+  gap: 50px;
+}
+
+.room-card {
+background: linear-gradient(180deg, #222121 0%, rgba(34, 33, 33, 0.24) 54.21%, #222121 100%);
+  border-radius: 3px;
+  min-height: 300px;
+  width: 90%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  box-shadow: 0 2px 16px rgba(40, 40, 40, 0.08);
+  overflow: hidden;
+}
+
+.room-icons {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.room-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 7px;
+}
+
+.room-card-info {
+  position: relative;
+  z-index: 1;
+  padding: 20px 18px 12px 18px;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;  
+  border-radius: 0 0 6px 6px;
+}
+
+.room-card-title {
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.room-card-price {
+  font-size: 1em;
+  font-weight: 600;
+  opacity: 0.87;
+  margin-top: 2px;
+}
+
+.room-card-bookbtn {
+  background: none;
+  border: 1.5px solid #d3b175;
+  border-radius: 6px;
+  color: #d3b175;
+  padding: 4px 18px;
+  font-size: 1em;
+  font-family: 'Georgia', serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .14s, color .14s;
+  display: flex;
+  align-items: center;
+}
+.room-card-bookbtn:hover {
+  background: #d3b175;
+  color: #232222;
+}
+.room-card-bookbtn .arrow {
+  margin-left: 5px;
+}
+
+@media (max-width: 900px) {
+  .room-section-title { font-size: 1.8em; }
+  .room-cards-grid { gap: 18px; }
+}
+@media (max-width: 600px) {
+  .room-section {
+    padding: 0 6px;
+  }
+  .room-section-title { font-size: 1.32em; }
+  .room-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .room-card {
+    min-height: 120px;
+  }
+  .room-card-info { padding: 12px 10px 10px 12px; }
+}

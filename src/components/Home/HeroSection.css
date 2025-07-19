@@ -1,0 +1,393 @@
+.hero {
+  color: white;
+  padding: 120px 20px 80px;
+  text-align: center;
+  position: relative;
+  min-height: 80vh;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #222121 0%, rgba(34, 33, 33, 0.24) 54.21%, #222121 100%);
+}
+
+.navbar-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  color: white;
+  padding: 20px 100px;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links a {
+  margin-left: 50px;
+  font-weight: 300;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: poppins;
+}
+
+.nav-links a:hover {
+  color: #ffcb05;
+}
+
+.first-heading{
+font-family: Poppins;
+font-weight: 300;
+font-style: Light;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: 24%;
+text-align: center;
+text-transform: uppercase;
+color:#BF9766;
+}
+
+.second-heading{
+    font: forum;
+    font-weight: 400;
+    font-style: forum;
+    font-size: 70px;
+    line-height: 124%;
+    letter-spacing: 0;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+.editable-container {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  transition: border 0.3s;
+  box-sizing: border-box;
+  white-space: normal; 
+  /* max-width: 50%;
+  min-height: auto;
+  text-align: inherit; 
+  max-height: auto;
+  min-width: auto; */
+
+}
+
+
+.editable-container:hover {
+  border: 1px dashed #e77f2e;
+  border-radius: 5px;
+}
+
+.edit-icon {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: -40px;
+  font-size: 20px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid #e77f2e;
+  border-radius: 50%;
+  padding: 5px 10px;
+  color: black;
+}
+
+.editable-container:hover .edit-icon {
+  display: inline;
+}
+
+
+.inline-popup-editor {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  background: white;
+  padding: 15px;
+  width: 350px;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+  color: black;
+  box-sizing: border-box;
+}
+
+.editor-buttons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  color: red;
+}
+
+.save-btn, .cancel-btn {
+  padding: 8px 15px;
+  margin-left: 10px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn {
+  background-color: #e77f2e;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: grey;
+  color: white;
+}
+
+/* adding css for add button function */
+/* ✅ Add Button Container */
+.add-btn-container {
+  margin-top: 20px;
+  text-align: center;
+ 
+}
+
+/* ✅ Custom Button Styles */
+.custom-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* ✅ Button Size Variants */
+.small {
+  font-size: 14px;
+  padding: 8px 20px;
+}
+
+.medium {
+  font-size: 18px;
+  padding: 12px 30px;
+}
+
+.large {
+  font-size: 24px;
+  padding: 16px 40px;
+}
+
+/* ✅ Main Edit Button (Add/Edit Trigger) */
+.edit-main-btn, .add-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-left: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color:transparent;
+  color: white;
+  transition: background 0.3s;
+  border: 1px dashed white;
+}
+
+.edit-main-btn:hover, .add-btn:hover {
+  background-color: goldenrod;
+}
+
+/* ✅ Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ✅ Popup Box */
+.button-popup-editor {
+  background: white;
+  color: black;
+  padding: 25px;
+  width: 400px;
+  max-width: 90vw;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+}
+
+/* ✅ Input Fields & Selects */
+.input-field,
+.button-popup-editor select,
+.button-popup-editor input[type="color"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* ✅ Popup Labels */
+.button-popup-editor label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+/* ✅ Popup Action Buttons */
+.popup-buttons,
+.editor-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* ✅ Individual Button Styles */
+.save-btn, .cancel-btn, .delete-btn {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.save-btn {
+  background-color: #4A90E2;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: grey;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #ff3b3b;
+  color: white;
+}
+
+/* ✅ Hover Effects */
+.save-btn:hover {
+  background-color: #357ac7;
+}
+
+.cancel-btn:hover {
+  background-color: #5e5e5e;
+}
+
+.delete-btn:hover {
+  background-color: #d22d2d;
+}
+
+/* ✅ Responsive */
+@media (max-width: 500px) {
+  .button-popup-editor {
+    width: 90vw;
+    padding: 20px;
+  }
+
+  .custom-btn, .small, .medium, .large {
+    width: 80%;
+    margin-bottom: 15px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar-hero {
+    padding: 15px 30px;
+    flex-direction: row;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav-links a {
+    margin-left: 20px;
+    font-size: 16px;
+  }
+
+  .inline-popup-editor {
+    width: 60vw;
+  }
+
+  .edit-icon {
+    right: -30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .navbar-hero {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .logo img{
+    width: 50%;
+    align-items: left;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .nav-links a {
+    margin: 8px 0;
+    font-size: 16px;
+    word-spacing: 10px;
+  }
+
+  .inline-popup-editor {
+    width: 65vw;
+    left: 5vw;
+  }
+}
+
+.ql-align-center {
+  text-align: center;
+}
+
+.ql-align-right {
+  text-align: right;
+}
+
+.ql-align-left {
+  text-align: left;
+}
+
+.ql-size-small {
+  font-size: 50;
+}
+
+.ql-size-large {
+  font-size: 70px;
+}
+
+.ql-size-huge {
+  font-size: 90px;
+}
