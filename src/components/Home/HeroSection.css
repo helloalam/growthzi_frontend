@@ -6,6 +6,7 @@
   min-height: 80vh;
   box-sizing: border-box;
   background: linear-gradient(180deg, #222121 0%, rgba(34, 33, 33, 0.24) 54.21%, #222121 100%);
+  width: auto;
 }
 
 .navbar-hero {
@@ -27,6 +28,8 @@
   font-size: 28px;
   font-weight: bold;
   color: white;
+  box-sizing: border-box;
+  min-height: 10px;
 }
 
 .nav-links a {

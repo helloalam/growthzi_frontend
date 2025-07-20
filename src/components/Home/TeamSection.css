@@ -2,7 +2,7 @@
   background: #fff;
   padding: 54px 0 56px 0;
   width: 100vw;
-  margin: 250px auto;
+  margin: 260px auto;
   box-sizing: border-box;
 }
 
@@ -10,6 +10,7 @@
   max-width: 1220px;
   margin: 0 auto;
   padding: 0 18px;
+  box-sizing: border-box;
 }
 
 .team-header {

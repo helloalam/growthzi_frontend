@@ -6,7 +6,6 @@ function App() {
   return (
     <Router>
       <nav className="navbar">
-        {/* Navbar content */}
       </nav>
 
       <Switch>
