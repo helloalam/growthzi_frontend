@@ -55,7 +55,7 @@ function Error() {
     };
 
     try {
-      const res = await fetch("https://growthzi-backend0.onrender.com", {
+      const res = await fetch("https://growthzi-backend0.onrender.com/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
