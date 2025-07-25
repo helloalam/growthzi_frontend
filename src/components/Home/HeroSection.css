@@ -1,12 +1,17 @@
 .hero {
   color: white;
-  padding: 120px 20px 80px;
+  padding: 120px 20px 140px;
   text-align: center;
   position: relative;
   min-height: 80vh;
   box-sizing: border-box;
   background: linear-gradient(180deg, #222121 0%, rgba(34, 33, 33, 0.24) 54.21%, #222121 100%);
   width: auto;
+  padding-bottom: 100px;
+  min-width: 100vw;
+}
+body {
+  overflow-x: hidden;
 }
 
 .navbar-hero {
@@ -68,6 +73,17 @@ color:#BF9766;
     box-sizing: border-box;
 }
 
+.empty-heading {
+  border: 2px dashed #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+
 
 .editable-container {
   position: relative;
@@ -76,12 +92,12 @@ color:#BF9766;
   transition: border 0.3s;
   box-sizing: border-box;
   white-space: normal; 
-  /* max-width: 50%;
+  max-width: 60%;
   min-height: auto;
   text-align: inherit; 
   max-height: auto;
-  min-width: auto; */
-
+  min-width: auto;
+  word-wrap: break-word;
 }
 
 
@@ -150,15 +166,14 @@ color:#BF9766;
   color: white;
 }
 
-/* adding css for add button function */
-/* ✅ Add Button Container */
+
 .add-btn-container {
   margin-top: 20px;
   text-align: center;
  
 }
 
-/* ✅ Custom Button Styles */
+
 .custom-btn {
   display: inline-block;
   padding: 12px 30px;
@@ -171,7 +186,7 @@ color:#BF9766;
   cursor: pointer;
 }
 
-/* ✅ Button Size Variants */
+
 .small {
   font-size: 14px;
   padding: 8px 20px;
@@ -187,7 +202,7 @@ color:#BF9766;
   padding: 16px 40px;
 }
 
-/* ✅ Main Edit Button (Add/Edit Trigger) */
+
 .edit-main-btn, .add-btn {
   display: inline-block;
   padding: 10px 20px;
@@ -206,7 +221,6 @@ color:#BF9766;
   background-color: goldenrod;
 }
 
-/* ✅ Popup Overlay */
 .popup-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -217,7 +231,7 @@ color:#BF9766;
   z-index: 1000;
 }
 
-/* ✅ Popup Box */
+
 .button-popup-editor {
   background: white;
   color: black;
@@ -229,7 +243,6 @@ color:#BF9766;
   box-sizing: border-box;
 }
 
-/* ✅ Input Fields & Selects */
 .input-field,
 .button-popup-editor select,
 .button-popup-editor input[type="color"] {
@@ -242,14 +255,12 @@ color:#BF9766;
   box-sizing: border-box;
 }
 
-/* ✅ Popup Labels */
 .button-popup-editor label {
   display: block;
   margin-bottom: 5px;
   font-weight: 600;
 }
 
-/* ✅ Popup Action Buttons */
 .popup-buttons,
 .editor-buttons {
   display: flex;
@@ -257,7 +268,6 @@ color:#BF9766;
   margin-top: 20px;
 }
 
-/* ✅ Individual Button Styles */
 .save-btn, .cancel-btn, .delete-btn {
   flex: 1;
   margin: 0 5px;
@@ -285,7 +295,6 @@ color:#BF9766;
   color: white;
 }
 
-/* ✅ Hover Effects */
 .save-btn:hover {
   background-color: #357ac7;
 }
@@ -298,7 +307,6 @@ color:#BF9766;
   background-color: #d22d2d;
 }
 
-/* ✅ Responsive */
 @media (max-width: 500px) {
   .button-popup-editor {
     width: 90vw;
@@ -318,8 +326,10 @@ color:#BF9766;
     flex-direction: row;
   }
 
-  .logo {
-    font-size: 24px;
+  .logo img{
+  width: 50%;
+  align-items: left;
+     margin-right: 150px;
   }
 
   .nav-links a {
@@ -340,29 +350,27 @@ color:#BF9766;
 
   .navbar-hero {
     flex-direction: row;
-    justify-content: center;
+    justify-content:space-between;
     align-items: center;
     height: auto;
     box-sizing: border-box;
+    display: flex;
+    top: 0;
+    left: 0;
   }
 
-  .logo img{
-    width: 50%;
-    align-items: left;
-    margin: 0 auto;
-    padding: 0 auto;
-  }
+
 
   .nav-links {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .nav-links a {
     margin: 8px 0;
-    font-size: 16px;
+    font-size: 12px;
     word-spacing: 10px;
+      margin-left: 30px;
   }
 
   .inline-popup-editor {

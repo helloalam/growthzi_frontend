@@ -10,6 +10,16 @@
   text-align: center;
 }
 
+.empty-heading {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+  padding: 12px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+
+
 .error-404-bg {
   position: absolute;
   top: 32%;
@@ -29,6 +39,7 @@
   position: relative;
   z-index: 2;
   margin-top: 8vw;
+  width: 100vw;
 }
 
 .error-subtitle {
@@ -38,10 +49,13 @@
   font-weight: 500;
   margin-bottom: 24px;
   letter-spacing: 0.02em;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 12px;
+  justify-content: center;
 }
+
+
 
 .error-subtitle-input {
   font-size: 2em;
@@ -56,12 +70,13 @@
   font-size: 1.19em;
   color: #e5e5e5;
   font-family: 'Georgia', serif;
-  max-width: 650px;
+  max-width: 50vw;
   margin-left: auto;
   margin-right: auto;
 }
 .error-desc {
   color: #e5e5e5;
+  word-break: break-all;
 }
 
 .custom-btn {

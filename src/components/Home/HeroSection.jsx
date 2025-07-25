@@ -2,6 +2,14 @@ import { useState } from "react";
 import ReactQuill ,{Quill} from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./HeroSection.css";
+import "./BookingForm";
+import BookingForm from "./BookingForm";
+
+function stripHtml(html) {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+}
   const size = Quill.import("formats/size");
   size.whitelist = ["small", "medium", "large", "huge"];
   Quill.register(size,true);
@@ -138,23 +146,37 @@ function HeroSection() {
       </nav>
 
       <div className="first-heading">Best Place to Relax and Enjoy</div>
-
-      {/* Editable Title */}
-      <div className="editable-container">
-        <div dangerouslySetInnerHTML={{ __html: title }} />
-        <span className="edit-icon" onClick={() => setEditTitle(true)}>✏️</span>
-        {editTitle && (
-          <div className="inline-popup-editor">
-            <ReactQuill theme="snow" value={title} onChange={setTitle} modules={quillModules} formats={quillFormats} />
-            <div className="editor-buttons">
-              <button className="save-btn" onClick={handleSaveTitle}>Save</button>
-              <button className="cancel-btn" onClick={() => setEditTitle(false)}>Cancel</button>
-            </div>
-          </div>
-        )}
+<div className="editable-container">
+  {editTitle ? (
+    <>
+      <div dangerouslySetInnerHTML={{ __html: title }} />
+      <div className="inline-popup-editor">
+        <ReactQuill
+          theme="snow"
+          value={title}
+          onChange={setTitle}
+          modules={quillModules}
+          formats={quillFormats}
+        />
+        <div className="editor-buttons">
+          <button className="save-btn" onClick={handleSaveTitle}>Save</button>
+          <button className="cancel-btn" onClick={() => setEditTitle(false)}>Cancel</button>
+        </div>
       </div>
+    </>
+  ) : stripHtml(title).trim() ? (
+    <>
+      <div dangerouslySetInnerHTML={{ __html: title }} />
+      <span className="edit-icon" onClick={() => setEditTitle(true)}>✏️</span>
+    </>
+  ) : (
+    <div className="empty-heading" onClick={() => setEditTitle(true)}>
+      + Add Heading
+    </div>
+  )}
+</div>
 
-      {/* Editable Button */}
+
       <div className="add-btn-container">
         {buttonVisible ? (
           <div className="editable-container">
@@ -172,8 +194,6 @@ function HeroSection() {
           <button className="add-btn" onClick={openButtonPopup}>+ Add Button</button>
         )}
       </div>
-
-      {/* Popup */}
       {showButtonPopup && (
         <div className="popup-overlay">
           <div className="button-popup-editor">
@@ -204,6 +224,7 @@ function HeroSection() {
           </div>
         </div>
       )}
+      <BookingForm />
     </section>
   );
 }

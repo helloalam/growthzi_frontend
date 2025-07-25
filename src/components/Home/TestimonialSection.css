@@ -1,7 +1,7 @@
 .testimonial-bg {
 background: linear-gradient(180deg, #222121 0%, rgba(34, 33, 33, 0.24) 54.21%, #222121 100%);
   padding: 90px 0 68px 0;
-  width: 100%;
+  width: 100vw;
   margin-top:100px;
   height:500px;
   box-sizing: border-box;
@@ -42,8 +42,6 @@ height: 81;
 top: 4347px;
 left: 443px;
 opacity: 1;
-
-
 }
 
 .testimonial-card-wrapper {

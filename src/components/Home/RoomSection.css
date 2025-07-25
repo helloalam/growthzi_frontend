@@ -1,7 +1,8 @@
 .room-section {
   max-width: 1200px;
-  margin: 300px auto 0 auto;
+  margin: 200px auto 0 auto;
   padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .vertical-line{
@@ -117,20 +118,30 @@ background: linear-gradient(180deg, #222121 0%, rgba(34, 33, 33, 0.24) 54.21%, #
 }
 
 @media (max-width: 900px) {
+   .room-section {
+    margin-top: 350px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
   .room-section-title { font-size: 1.8em; }
   .room-cards-grid { gap: 18px; }
 }
 @media (max-width: 600px) {
   .room-section {
     padding: 0 6px;
+    margin-top: 250px;
+
   }
   .room-section-title { font-size: 1.32em; }
   .room-cards-grid {
     grid-template-columns: 1fr;
     gap: 14px;
   }
+
   .room-card {
-    min-height: 120px;
+    min-height: 250px;
   }
-  .room-card-info { padding: 12px 10px 10px 12px; }
+  .room-card-info { padding: 12px 60px 10px 12px; }
 }

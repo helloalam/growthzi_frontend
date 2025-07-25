@@ -10,7 +10,6 @@ function formatDate(date) {
     year: "numeric",
   });
 }
-
 const today = new Date().toISOString().split("T")[0];
 
 function BookingForm() {

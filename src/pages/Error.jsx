@@ -4,6 +4,12 @@ import "react-quill/dist/quill.snow.css";
 import "./Error.css";
 import Footer from "../components/Footer/Footer";
 
+const isMeaningfulHtml = (html) => {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent.trim().length > 0;
+};
+
 function Error() {
   const subtitle = "Oops!! Something Is Missing";
 
@@ -138,29 +144,43 @@ function Error() {
         <div className="error-404-bg">404</div>
 
         <div className="error-content-container">
-          <div className="editable-container center">
+          <div className="editable-container">
             <h2 className="error-subtitle">{subtitle}</h2>
           </div>
 
           <div className="editable-container center error-desc-container">
-            <div className="error-desc" dangerouslySetInnerHTML={{ __html: desc }} />
-            <span className="edit-icon" onClick={() => setEditDesc(true)}>✏️</span>
-            {editDesc && (
-              <div className="inline-popup-editor">
-                <ReactQuill
-                  theme="snow"
-                  value={desc}
-                  onChange={setDesc}
-                  modules={quillModules}
-                  formats={quillFormats}
-                />
-                <div className="editor-buttons">
-                  <button className="save-btn" onClick={handleSaveDesc}>Save</button>
-                  <button className="cancel-btn" onClick={() => setEditDesc(false)}>Cancel</button>
+            {editDesc ? (
+              <>
+                <div className="error-desc" dangerouslySetInnerHTML={{ __html: desc }} />
+                <div className="inline-popup-editor">
+                  <ReactQuill
+                    theme="snow"
+                    value={desc}
+                    onChange={setDesc}
+                    modules={quillModules}
+                    formats={quillFormats}
+                  />
+                  <div className="editor-buttons">
+                    <button className="save-btn" onClick={handleSaveDesc}>Save</button>
+                    <button className="cancel-btn" onClick={() => setEditDesc(false)}>Cancel</button>
+                  </div>
                 </div>
-              </div>
+              </>
+            ) : (
+              <>
+                <div
+                  className={`error-desc ${desc.trim() ? "" : "empty-heading"}`}
+                  onClick={() => setEditDesc(true)}
+                  dangerouslySetInnerHTML={{ __html: isMeaningfulHtml(desc) ? desc : "<p>+ Add Description</p>" }}
+                />
+                {desc.trim() && (
+                  <span className="edit-icon" onClick={() => setEditDesc(true)}>✏️</span>
+                )}
+              </>
             )}
           </div>
+
+
 
           <div className="add-btn-container center">
             {buttonVisible ? (
