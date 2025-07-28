@@ -59,7 +59,7 @@ function RoomSection() {
         setRooms(updatedRooms);
       } else {
         alert(data.error || "Upload failed");
-        console.error("[ERROR] Upload failed:", data.error);  // ✅ console log
+        console.error("[ERROR] Upload failed:", data.error); 
       }
     } catch (err) {
       console.error(err);
