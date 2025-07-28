@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./RoomSection.css";
 import doublebed from "../../icons/doublebed.svg";
 import ac from "../../icons/ac.svg";
@@ -35,6 +36,7 @@ const initialRooms = [
 
 function RoomSection() {
   const [rooms, setRooms] = useState(initialRooms);
+  const [uploadProgress, setUploadProgress] = useState({});
 
   const handleImageUpload = async (event, image_id, index) => {
     const file = event.target.files[0];
@@ -45,26 +47,27 @@ function RoomSection() {
     formData.append("image_id", image_id);
 
     try {
-      const res = await fetch("https://growthzi-backend0.onrender.com/upload", {
-        method: "POST",
-        body: formData,
+      const res = await axios.post("https://growthzi-backend0.onrender.com/upload", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+        onUploadProgress: (progressEvent) => {
+          const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          setUploadProgress(prev => ({ ...prev, [index]: percent }));
+        }
       });
 
-      const data = await res.json();
-
-      if (res.ok) {
-        console.log("[SUCCESS] Uploaded image:", data.url);
+      if (res.status === 200 && res.data.url) {
         const updatedRooms = [...rooms];
-        updatedRooms[index].image_url = data.url;
+        updatedRooms[index].image_url = res.data.url;
         setRooms(updatedRooms);
+        setUploadProgress(prev => ({ ...prev, [index]: 0 })); // Reset progress
+        console.log("[SUCCESS] Uploaded image:", res.data.url);
       } else {
-        alert(data.error || "Upload failed");
-        console.error("[ERROR] Upload failed:", data.error); 
+        alert("Upload failed");
+        console.error("[ERROR] Upload failed:", res.data.error);
       }
     } catch (err) {
-      console.error(err);
-      alert("Server error");
       console.error("[ERROR] Upload request failed:", err);
+      alert("Server error");
     }
   };
 
@@ -80,11 +83,7 @@ function RoomSection() {
           <div className={`room-card ${!room.image_url ? "no-image" : ""}`} key={idx}>
             <div className="room-card-image-wrapper">
               {room.image_url ? (
-                <img
-                  src={room.image_url}
-                  alt=""
-                  className="room-card-image"
-                />
+                <img src={room.image_url} alt="" className="room-card-image" />
               ) : null}
 
               <label className="edit-icon-wrapper">
@@ -96,16 +95,21 @@ function RoomSection() {
                 />
                 ✏️
               </label>
+
+              {uploadProgress[idx] > 0 && uploadProgress[idx] < 100 && (
+                <div className="upload-progress-bar">
+                  <div className="upload-progress-fill" style={{ width: `${uploadProgress[idx]}%` }} />
+                </div>
+              )}
             </div>
 
             <div className="room-card-info">
               <span className="room-card-title">{room.title}</span>
               <span className="room-card-price">{room.price}</span>
-              <span className="room-card-hr">{room.hr}<hr></hr></span>
-               {room.size &&
-                <span className="room-card-size">{room.size}</span>
-              }
-                    {room.featured && (
+              <span className="room-card-hr">{room.hr}<hr /></span>
+              {room.size && <span className="room-card-size">{room.size}</span>}
+
+              {room.featured && (
                 <div className="room-card-actions">
                   <button className="room-card-bookbtn">
                     Book Now <span className="arrow">{'>'}</span>
@@ -125,6 +129,5 @@ function RoomSection() {
     </section>
   );
 }
-
 
 export default RoomSection;
