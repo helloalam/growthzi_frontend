@@ -47,7 +47,7 @@ function RoomSection() {
     formData.append("image_id", image_id);
 
     try {
-      const res = await axios.post("growthzibackend0-production.up.railway.app/upload", formData, {
+      const res = await axios.post("https://growthzibackend0-production.up.railway.app/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         onUploadProgress: (progressEvent) => {
           const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);

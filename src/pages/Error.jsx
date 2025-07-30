@@ -61,7 +61,7 @@ function Error() {
     };
 
     try {
-      const res = await fetch("https://growthzi-backend0.onrender.com/update-section", {
+      const res = await fetch("https://growthzibackend0-production.up.railway.app/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -111,7 +111,7 @@ function Error() {
     };
 
     try {
-      const res = await fetch("https://growthzi-backend0.onrender.com/update-section", {
+      const res = await fetch("https://growthzibackend0-production.up.railway.app/update-section", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
